@@ -1,29 +1,31 @@
-from pathlib import Path
-
-import typer
-from loguru import logger
-from tqdm import tqdm
-
-from src.config import FIGURES_DIR, PROCESSED_DATA_DIR
-
-app = typer.Typer()
+import matplotlib.pyplot as plt
 
 
-@app.command()
-def main(
-    # ---- REPLACE DEFAULT PATHS AS APPROPRIATE ----
-    input_path: Path = PROCESSED_DATA_DIR / "dataset.csv",
-    output_path: Path = FIGURES_DIR / "plot.png",
-    # -----------------------------------------
-):
-    # ---- REPLACE THIS WITH YOUR OWN CODE ----
-    logger.info("Generating plot from data...")
-    for i in tqdm(range(10), total=10):
-        if i == 5:
-            logger.info("Something happened for iteration 5.")
-    logger.success("Plot generation complete.")
-    # -----------------------------------------
+def plot_pred_actual(y, predictions, test_index, i):
+    """
+    Plots models' predictions against the actual demand for given indices in test_index.
 
-
-if __name__ == "__main__":
-    app()
+    Parameters:
+    ----------
+    y : pd.Series
+        Target variable
+    predictions : dict
+        Dictionary with model names as keys and predictions as values
+    test_index : pd.DatetimeIndex
+        Indices of the test set
+    i : int
+        Weekday (0) or weekend (1)
+    """
+    fig, ax = plt.subplots(figsize=(12, 4))
+    fig.suptitle("Weekday" if i == 0 else "Weekend")
+    ax.plot(
+        y.loc[test_index].values,
+        "x-",
+        alpha=0.2,
+        label="Actual demand",
+        color="black",
+    )
+    for name, preds in predictions.items():
+        ax.plot(preds, "x-", label=name)
+    _ = ax.legend()
+    plt.show()

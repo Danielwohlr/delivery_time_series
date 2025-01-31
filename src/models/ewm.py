@@ -35,4 +35,4 @@ class EWMBaseline(RegressorMixin, BaseEstimator):
                 .mean()
                 .iloc[-1]
             )
-        return ewm
+        return ewm.values
