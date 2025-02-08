@@ -3,7 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from src.config import load_data_split, split_X_y
 from src.features import get_lagged_features, get_nonexogenous_features, get_raw_relevant_features
-from sklearn.model_selection import cross_val_predict
 
 import pandas as pd
 from src.plots import plot_pred_actual

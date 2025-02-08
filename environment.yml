@@ -1,15 +1,25 @@
-name: food_delivery_ts
+name: wohlrath_applied_scientist
 channels:
   - conda-forge
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
 dependencies:
   - python=3.13
-  - black
-  - flake8
-  - isort
-  - pip
-  - typer
-  - loguru
+  - numpy
+  - pandas
+  - ipykernel
+  - scikit-learn
+  - matplotlib
+  - seaborn
   - tqdm
+  - statsmodels
+  - xgboost
+  - scipy
+  - pip
   - pip:
+    - plotly
+    - polars
     - python-dotenv
+    - typer
+    - loguru
     - -e .
