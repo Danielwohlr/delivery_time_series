@@ -4,41 +4,44 @@
     <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
 </a>
 
-Home Assignment for Applied Scientist Position at Wolt
+Home Assignment for Applied Scientist Position at Wolt.
+
+Presentation is in reports/presentation.pdf.
+
+Installation instructions: 
+Being in the root of this project, run
+```conda env create -f environment.yml``` in your terminal to create a conda environment.
+
+Then activate it and run, e.g. src/modeling/evaluate.py or src/modeling/qual_analysis.py, for running the experiments.
+
+
 
 ## Project Organization
 
 ```
-├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
 ├── README.md          <- The top-level README for developers using this project.
-├── data
-│   ├── processed      <- The final, canonical data sets for modeling.
-│   └── raw            <- The original, immutable data dump.
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries
-│
+├── data                <- The original, immutable data dump.
 ├── pyproject.toml     <- Project configuration file with package metadata for 
 │                         food_delivery_ts and configuration for tools like black
 │
 ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
 │   └── figures        <- Generated graphics and figures to be used in reporting
 │
-└── food_delivery_ts   <- Source code for use in this project.
-    │
-    ├── __init__.py             <- Makes food_delivery_ts a Python module
+└── src                <- Source code for use in this project.
     │
     ├── config.py               <- Store useful variables and configuration
     │
-    ├── dataset.py              <- Scripts to download or generate data
-    │
     ├── features.py             <- Code to create features for modeling
-    │
+    └── plots.py                <- Code to create some visualizations
     ├── modeling                
     │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
-    │   └── train.py            <- Code to train models
+    │   ├── evaluate.py          <- Compute CrossValidation Losses
+    │   └── qual_analysis.py            <- Qualitative Analysis, e.g. Analysis predicted values, Residual analysis, Feature Importance
     │
-    └── plots.py                <- Code to create visualizations
+    ├── models                  <- Modules with all Prediction models definitions                
+        ├── ewm.py              <- benchmark ewm
+        ├── hgbr.py             <- Gradient Boosting Regression Tree
+        ├── regression.py        <- All Implementations of Linear Regression Pipelines
 ```
 
 --------
