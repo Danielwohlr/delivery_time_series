@@ -4,7 +4,6 @@
     <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
 </a>
 
-Home Assignment for Applied Scientist Position at Wolt.
 
 Presentation is in reports/presentation.pdf.
 

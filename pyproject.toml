@@ -5,7 +5,7 @@ build-backend = "flit_core.buildapi"
 [project]
 name = "food_delivery_ts"
 version = "0.0.1"
-description = "Home Assignment for Applied Scientist Position at Wolt"
+description = "Time Series Analysis of Food Delivery Services"
 authors = [
   { name = "Daniel Wohlrath" },
 ]
