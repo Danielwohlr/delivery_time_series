@@ -75,6 +75,22 @@ def get_lagged_features():
     return all_features_df
 
 
+def to_category(X):
+    X = X.copy()  # Avoid modifying original data
+    for col in X.columns:
+        X[col] = X[col].astype("category")
+    return X
+
+
+# Define the ColumnTransformer
+passthrough_original = ColumnTransformer(
+    transformers=[
+        ("categorical", FunctionTransformer(to_category), ["hour", "dayofweek"]),
+    ],
+    remainder="passthrough",  # Pass through all other columns
+)
+
+
 def periodic_spline_transformer(period, n_splines=None, degree=3):
     if n_splines is None:
         n_splines = period
